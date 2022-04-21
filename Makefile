@@ -11,15 +11,15 @@ docker-compose:
 
 rvm:
 	@echo 'Installing RVM'
-	sudo bash ./scripts/rvm.sh
+	bash ./scripts/rvm.sh
 
 rbenv:
 	@echo 'Installing RBENV'
-	sudo bash ./scripts/rbenv.sh
+	bash ./scripts/rbenv.sh
 
 nvm:
 	@echo 'Installing NVM'
-	sudo bash ./scripts/nvm.sh
+	bash ./scripts/nvm.sh
 
 postgresql-12:
 	@echo 'Installing Postgresql 12'

@@ -1,11 +1,5 @@
 #!/bin/bash
 
-if [ "${EUID}" -ne 0 ]
-then
-  echo "Вы должны запустить этот скрипт через sudo или от имени root."
-  exit 1
-fi
-
 clear
 PS3='Выберите необходимую программу: '
 
@@ -25,15 +19,15 @@ case $Programm in
   ;;
   "RVM")
   echo "Installing $Programm"
-  sudo bash ./scripts/rvm.sh
+  bash ./scripts/rvm.sh
   ;;
   "RBENV")
   echo "Installing $Programm"
-  sudo bash ./scripts/rbenv.sh
+  bash ./scripts/rbenv.sh
   ;;
   "NVM")
   echo "Installing $Programm"
-  sudo bash ./scripts/nvm.sh
+  bash ./scripts/nvm.sh
   ;;
   "Postgresql")
   clear
