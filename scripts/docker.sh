@@ -21,11 +21,21 @@ then
 	sudo systemctl start docker && sudo systemctl enable docker
 fi
 
-if [ "$os" == "cpe:/o:centos:centos:7" ] || [ "$os" == "cpe:/o:centos:centos:8" ]; 
+if [ "$os" == "cpe:/o:centos:centos:7" ]; 
 then
 	sudo yum install -y curl
 	curl -fsSL https://get.docker.com/ | sh
 	sudo usermod -aG docker $(whoami)
 	sudo systemctl start docker && sudo systemctl enable docker
 	sudo chmod 666 /var/run/docker.sock
+fi
+
+if [ "$os" == "cpe:/o:centos:centos:8" ]; 
+then
+    yum -y install yum-utils gcc gcc-c++
+    yum-config-manager \
+        --add-repo \
+        https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo 
+    yum -y install docker-ce docker-ce-cli containerd.io --allowerasing
+    sudo systemctl start docker && sudo systemctl enable docker
 fi
